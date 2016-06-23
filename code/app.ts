@@ -1,6 +1,5 @@
 let drop = document.getElementById('drop');
 let searchField = document.getElementById('search-field');
-let searchButton = document.querySelector('.search-button');
 var result: any;
 
 interface FlickrPhoto {
@@ -20,19 +19,21 @@ let displayPhotoOn = (trgt: HTMLElement) => (photo: Photo) => {
 }
 
 let convertFlickrPhoto: (fp: FlickrPhoto) => Photo = (flickrPhoto: FlickrPhoto) => ({src: flickrPhoto.url_s});
-let convertFlickrPhotos = (flickrPhotos: Array<FlickrPhoto>) => flickrPhotos.map(convertFlickrPhoto);
+let convertFromFlickrPhotos = (flickrPhotos: Array<FlickrPhoto>) => flickrPhotos.map(convertFlickrPhoto);
 let displayPhotosOn = (trgt: HTMLElement) => (photos: Array<Photo>) => photos.forEach(displayPhotoOn(trgt));
 let addImagesIfEnter = (ev: KeyboardEvent) => [ev].filter((ev: KeyboardEvent) => ev.keyCode === 13).forEach(addImages);
 
-searchButton.addEventListener('click', addImages);
 searchField.addEventListener('keydown', addImagesIfEnter);
 
+function retrieveFlickrPhotos() {
+  return fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=437d9159d11ffaefdc98c84d0e55b3a9&text=${searchField.value}&per_page=3&format=json&nojsoncallback=1&extras=url_s`)
+    .then((data: any) => data.json())
+    .then((data: any) => data.photos.photo);
+}
 
 function addImages() {
-  fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=437d9159d11ffaefdc98c84d0e55b3a9&text=${searchField.value}&per_page=3&format=json&nojsoncallback=1&extras=url_s`)
-    .then((data: any) => data.json())
-    .then((data: any) => data.photos.photo)
-    .then(convertFlickrPhotos)
+  retrieveFlickrPhotos()
+    .then(convertFromFlickrPhotos)
     .then(displayPhotosOn(drop));
 }
 
