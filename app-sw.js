@@ -8,7 +8,7 @@ self.addEventListener('install', function (event) {
       console.log('[INSTALL] Adding app shell to cache');
       return cache.addAll([
         './',
-        '.index.html',
+        './index.html',
         './code/app.js',
         './style.css',
         './loading.gif'
