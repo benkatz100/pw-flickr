@@ -14,6 +14,7 @@ let convertFlickrPhoto = (flickrPhoto) => ({ src: flickrPhoto.url_s });
 let convertFromFlickrPhotos = (flickrPhotos) => flickrPhotos.map(convertFlickrPhoto);
 let displayPhotosOn = (trgt) => (photos) => photos.forEach(displayPhotoOn(trgt));
 let addImagesIfEnter = (ev) => [ev].filter((ev) => ev.keyCode === 13).forEach(addImages);
+let clearSearchField = () => searchField.value = '';
 searchField.addEventListener('keydown', addImagesIfEnter);
 function retrieveFlickrPhotos() {
     return fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=437d9159d11ffaefdc98c84d0e55b3a9&text=${searchField.value}&per_page=3&format=json&nojsoncallback=1&extras=url_s&sort=relevance`)
@@ -23,7 +24,8 @@ function retrieveFlickrPhotos() {
 function addImages() {
     retrieveFlickrPhotos()
         .then(convertFromFlickrPhotos)
-        .then(displayPhotosOn(drop));
+        .then(displayPhotosOn(drop))
+        .then(clearSearchField);
 }
 addImages();
 if ('serviceWorker' in navigator) {

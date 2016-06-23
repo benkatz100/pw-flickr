@@ -1,5 +1,5 @@
 let drop = document.getElementById('drop');
-let searchField = document.getElementById('search-field');
+let searchField: HTMLInputElement = <HTMLInputElement>document.getElementById('search-field');
 var result: any;
 
 interface FlickrPhoto {
@@ -22,6 +22,7 @@ let convertFlickrPhoto: (fp: FlickrPhoto) => Photo = (flickrPhoto: FlickrPhoto) 
 let convertFromFlickrPhotos = (flickrPhotos: Array<FlickrPhoto>) => flickrPhotos.map(convertFlickrPhoto);
 let displayPhotosOn = (trgt: HTMLElement) => (photos: Array<Photo>) => photos.forEach(displayPhotoOn(trgt));
 let addImagesIfEnter = (ev: KeyboardEvent) => [ev].filter((ev: KeyboardEvent) => ev.keyCode === 13).forEach(addImages);
+let clearSearchField = () => searchField.value = '';
 
 searchField.addEventListener('keydown', addImagesIfEnter);
 
@@ -34,7 +35,8 @@ function retrieveFlickrPhotos() {
 function addImages() {
   retrieveFlickrPhotos()
     .then(convertFromFlickrPhotos)
-    .then(displayPhotosOn(drop));
+    .then(displayPhotosOn(drop))
+    .then(clearSearchField)
 }
 
 addImages();
