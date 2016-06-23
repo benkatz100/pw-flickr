@@ -1,0 +1,30 @@
+#drop {
+  border: 1px solid gray;
+  border-radius: 5px;
+
+  display: flex;
+  align-content: stretch;
+  margin: 50px;
+  height: 150px;
+}
+
+.photo-container {
+  border: 1px solid gray;
+  flex-grow: 1;
+  /*height: 200px;*/
+  overflow: hidden;
+
+  display: flex;
+  align-items: stretch;
+
+  min-height: 200px;
+  background: #e0ffc7 url(./loading.gif) center center;
+}
+
+.search-field {
+  font-size: 100px;
+}
+
+.photo-container img {
+  width: 100%;
+}
