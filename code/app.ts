@@ -39,7 +39,7 @@ function addImages() {
 addImages();
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/app-sw.js').then(function(reg: any) {
+  navigator.serviceWorker.register('./app-sw.js').then(function(reg: any) {
     // registration worked
     console.log('Registration succeeded. Scope is ' + reg.scope);
   }).catch(function(error: string) {
