@@ -8,6 +8,20 @@
   flex-wrap: wrap;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header h1{
+  width: 80%;
+  font-size: 40px;
+  background-color: rgba(0, 255, 214, 0.3);
+  text-align: center;
+  border-radius: 10px;
+}
+
 .container {
   margin: 50px;
 }
@@ -16,6 +30,7 @@
   font-size: 30px;
   display: inline-block;
   width: 100%;
+
 }
 
 .photo-container {
