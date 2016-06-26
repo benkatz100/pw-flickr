@@ -8,7 +8,7 @@ let displayPhotoOn = (trgt) => (photo) => {
     let img = new Image();
     img.src = photo.src;
     node.appendChild(img);
-    trgt.appendChild(node);
+    trgt.insertBefore(node, trgt.firstChild);
 };
 let convertFlickrPhoto = (flickrPhoto) => ({ src: flickrPhoto.url_s });
 let convertFromFlickrPhotos = (flickrPhotos) => flickrPhotos.map(convertFlickrPhoto);
