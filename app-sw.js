@@ -27,7 +27,7 @@ let cacheResponse = request => response => {
 function fetchRequestIfNeeded(request) {
 
   return response => {
-    console.log(`[Fetch] Getting response from ${response ? 'cache' : 'server'}`);
+    console.log(`[Fetch] Getting ${request.url} from ${response ? 'cache' : 'server'}`);
     return (!response) ? fetch(request) : response;
   };
 }
