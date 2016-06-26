@@ -20,12 +20,12 @@ self.addEventListener('install', function (event) {
 });
 
 let cacheResponse = request => response => {
-  caches.open(cachesId).then(cache => cache.put(request, response));
+  caches.open(cachesId).then(cache => cache.put(request, response.clone()));
   return response;
 };
 
 function fetchRequestIfNeeded(request) {
-  return response => (!response) ? fetch(request) : response.clone();
+  return response => (!response) ? fetch(request) : response;
 }
 
 self.addEventListener('fetch', function (event) {
