@@ -3,15 +3,16 @@
 let cachesId = Math.floor(Math.random() * 10000);
 
 self.addEventListener('install', function (event) {
+  console.log(`[INSTALL] caching with cache id = ${cachesId}`);
   event.waitUntil(
     caches.open(cachesId).then(function (cache) {
       console.log('[INSTALL] Adding app shell to cache');
       return cache.addAll([
-        './',
-        './index.html',
-        './code/app.js',
-        './style.css',
-        './loading.gif'
+        '/',
+        '/index.html',
+        '/code/app.js',
+        '/style.css',
+        '/loading.gif'
       ]);
     }).then(function () {
       console.log('[INSTALL] finished adding all');
