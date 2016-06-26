@@ -20,7 +20,7 @@ self.addEventListener('install', function (event) {
 });
 
 let cacheResponse = request => response => {
-  caches.open(cachesId).then(cache => cache.put(request, response);
+  caches.open(cachesId).then(cache => cache.put(request, response));
   return response;
 };
 
