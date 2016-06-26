@@ -8,11 +8,11 @@ self.addEventListener('install', function (event) {
     caches.open(cachesId).then(function (cache) {
       console.log('[INSTALL] Adding app shell to cache');
       return cache.addAll([
-        'https://benkatz100.github.io/pw-flickr/',
-        'https://benkatz100.github.io/pw-flickr/index.html',
-        'https://benkatz100.github.io/pw-flickr/code/app.js',
-        'https://benkatz100.github.io/pw-flickr/style.css',
-        'https://benkatz100.github.io/pw-flickr/loading.gif'
+        '/pw-flickr/',
+        '/pw-flickr/index.html',
+        '/pw-flickr/code/app.js',
+        '/pw-flickr/style.css',
+        '/pw-flickr/loading.gif'
       ]);
     }).then(function () {
       console.log('[INSTALL] finished adding all');
