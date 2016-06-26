@@ -25,11 +25,14 @@ let cacheResponse = request => response => {
 };
 
 function fetchRequestIfNeeded(request) {
-  return response => (!response) ? fetch(request) : response;
+
+  return response => {
+    console.log(`[Fetch] Getting response from ${response ? 'cache' : 'server'}`);
+    return (!response) ? fetch(request) : response;
+  };
 }
 
 self.addEventListener('fetch', function (event) {
-
   event.respondWith(
     caches.match(event.request)
     .then(fetchRequestIfNeeded(event.request))
