@@ -25,7 +25,7 @@ let cacheResponse = request => response => {
 };
 
 function fetchRequestIfNeeded(request) {
-  return response => (!response) ? fetch(request) : response;
+  return response => (!response) ? fetch(request) : response.clone();
 }
 
 self.addEventListener('fetch', function (event) {
