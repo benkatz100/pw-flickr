@@ -16,6 +16,8 @@ self.addEventListener('install', function (event) {
       ]);
     }).then(function () {
       console.log('[INSTALL] finished adding all');
+    }).catch(function (e) {
+      console.error('[INSTALL] failed to cache', e);
     })
   );
 });
