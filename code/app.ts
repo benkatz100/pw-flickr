@@ -15,7 +15,7 @@ let displayPhotoOn = (trgt: HTMLElement) => (photo: Photo) => {
   let img: HTMLImageElement = new Image();
   img.src = photo.src;
   node.appendChild(img);
-  trgt.insertBefore(node, trgt  .firstChild);
+  trgt.insertBefore(node, trgt.firstChild);
 }
 
 let convertFlickrPhoto: (fp: FlickrPhoto) => Photo = (flickrPhoto: FlickrPhoto) => ({src: flickrPhoto.url_s});

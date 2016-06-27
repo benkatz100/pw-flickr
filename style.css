@@ -19,20 +19,20 @@
 
 .header h1{
   width: 80%;
-  font-size: 40px;
+  font-size: 2em;
   background-color: rgba(0, 255, 214, 0.3);
   text-align: center;
-  border-radius: 10px;
+  border-radius: 1em;
 }
 
 .container {
   position: absolute;
-  right: 20px;
-  left: 20px;
+  right: 1em;
+  left: 1em;
 }
 
 #search-field {
-  font-size: 30px;
+  font-size: 2em;
   display: inline-block;
   width: 100%;
   box-shadow: 2px -2px 2px -2px rgba(100,100,100,0.5);
@@ -41,16 +41,13 @@
 .photo-container {
   border: 1px solid gray;
   flex-grow: 1;
-  /*height: 200px;*/
   overflow: hidden;
 
   display: flex;
-  align-items: center;
-
-  max-height: 200px;
-  min-height: 200px;
+  align-items: stretch;
+  box-shadow: 2px -2px 2px -2px rgba(100,100,100,0.5);
   background: #e0ffc7 url(./loading.gif) center center;
-  min-width: 50px;
+  min-width: 15em;
 }
 
 .search-field {
@@ -58,6 +55,6 @@
 }
 
 .photo-container img {
+  object-fit: cover;
   width: 100%;
-  object-fit: fill;
 }
