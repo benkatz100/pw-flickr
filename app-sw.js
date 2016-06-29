@@ -14,7 +14,7 @@ self.addEventListener('install', function (event) {
         '/pw-flickr/code/app.js',
         '/pw-flickr/style.css',
         '/pw-flickr/loading.gif',
-        '/pw-flickr/icons/favicon.png',
+        '/pw-flickr/favicon.ico',
         '/pw-flickr/icons/icon-128x128.png',
         '/pw-flickr/icons/icon-144x144.png',
         '/pw-flickr/icons/icon-152x152.png'
