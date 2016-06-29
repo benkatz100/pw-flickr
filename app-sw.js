@@ -1,6 +1,6 @@
 /* global caches, self, console, fetch */
 'use strict';
-let cachesId = '1.0';
+let cachesId = '1.1';
 
 self.addEventListener('install', function (event) {
   console.log(`[INSTALL] caching with cache id = ${cachesId}`);
