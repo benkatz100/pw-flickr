@@ -10,9 +10,14 @@ self.addEventListener('install', function (event) {
       return cache.addAll([
         '/pw-flickr/',
         '/pw-flickr/index.html',
+        '/pw-flickr/fetch.js',
         '/pw-flickr/code/app.js',
         '/pw-flickr/style.css',
-        '/pw-flickr/loading.gif'
+        '/pw-flickr/loading.gif',
+        '/pw-flickr/icons/favicon.png',
+        '/pw-flickr/icons/icon-128x128.png',
+        '/pw-flickr/icons/icon-144x144.png',
+        '/pw-flickr/icons/icon-152x152.png'
       ]);
     }).then(function () {
       console.log('[INSTALL] finished adding all');
