@@ -23,7 +23,10 @@ self.addEventListener('install', function (event) {
 });
 
 let cacheResponse = request => response => {
-  caches.open(cachesId).then(cache => cache.put(request, response.clone()));
+  if (!request.url.match(/jpg|png/)) {
+    caches.open(cachesId).then(cache => cache.put(request, response.clone()));
+  }
+
   return response;
 };
 
