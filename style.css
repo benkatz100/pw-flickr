@@ -36,6 +36,7 @@
   display: inline-block;
   width: 100%;
   box-shadow: 2px -2px 2px -2px rgba(100,100,100,0.5);
+  box-sizing: border-box;
 }
 
 .photo-container {
@@ -49,11 +50,6 @@
   background: #e0ffc7 url(./loading.gif) center center;
   min-width: 15em;
 }
-
-.search-field {
-  font-size: 100px;
-}
-
 .photo-container img {
   object-fit: cover;
   width: 100%;
