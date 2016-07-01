@@ -7,6 +7,7 @@ var displayPhotoOn = function (trgt) { return function (photo) {
     node.addEventListener('click', function () { return node.remove(); });
     var img = new Image();
     img.src = photo.src;
+    img.alt = searchField.value;
     node.appendChild(img);
     trgt.insertBefore(node, trgt.firstChild);
 }; };

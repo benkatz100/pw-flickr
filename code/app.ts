@@ -14,6 +14,7 @@ let displayPhotoOn = (trgt: HTMLElement) => (photo: Photo) => {
   node.addEventListener('click', () => node.remove());
   let img: HTMLImageElement = new Image();
   img.src = photo.src;
+  img.alt = searchField.value
   node.appendChild(img);
   trgt.insertBefore(node, trgt.firstChild);
 }

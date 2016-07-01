@@ -1,6 +1,6 @@
 /* global caches, self, console, fetch */
 'use strict';
-let cachesId = '1.1';
+let cachesId = '1.5';
 
 self.addEventListener('install', function (event) {
   console.log(`[INSTALL] caching with cache id = ${cachesId}`);
@@ -17,21 +17,19 @@ self.addEventListener('install', function (event) {
         '/pw-flickr/favicon.ico',
         '/pw-flickr/icons/icon-128x128.png',
         '/pw-flickr/icons/icon-144x144.png',
+        '/pw-flickr/icons/icon-192x192.png',
         '/pw-flickr/icons/icon-152x152.png'
       ]);
     }).then(function () {
       console.log('[INSTALL] finished adding all');
     }).catch(function (e) {
-      console.error('[INSTALL] failed to cache', e);
+      console.error('[INSTALL] failed to install due to caching failure', e);
     })
   );
 });
 
 let cacheResponse = request => response => {
-  if (!request.url.match(/jpg|png/)) {
-    caches.open(cachesId).then(cache => cache.put(request, response.clone()));
-  }
-
+  caches.open(cachesId).then(cache => cache.put(request, response.clone()));
   return response;
 };
 
@@ -47,6 +45,13 @@ self.addEventListener('fetch', function (event) {
   event.respondWith(
     caches.match(event.request)
     .then(fetchRequestIfNeeded(event.request))
+    .catch(() => caches.open(cachesId)
+                  .then(cache => cache.keys())
+                  .then(requests =>
+                    requests.map(request => request.url)
+                    .filter(url => url && url.includes('api.flickr.com')))
+                  .then(urls => urls[0])
+                  .then(caches.match))
     .then(cacheResponse(event.request))
   );
 });
